@@ -1,0 +1,441 @@
+    <!DOCTYPE HTML>
+    <html>
+             <head>
+            	<meta http-equiv="content-type" content="text/html" />
+                
+            	 <link href="{{ asset('build/css/styleportail_div.css') }}" rel="stylesheet" type="text/css">
+
+                
+                
+                 <!-- Bootstrap -->
+                     <link href="{{ asset('build/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+         
+                 <!-- Bootstrap responsive -->
+                <link href="{{ asset('build/css/bootstrap-responsive.min.css') }}" rel="stylesheet" type="text/css">
+        
+            	<title>Portail Ens de Bertoua</title>
+            </head>
+    
+  <body>
+    
+        <div id="body">                       
+    
+    
+     <div id="logogenerale"> 
+
+                
+               
+             <div id="logogauche">
+              
+                        <div id="logocenter">
+                        
+                                <div id="logodroit"><img src="build/images/logo.png"/></div><img src="build/images/enslogo.png"  /></div>
+                                
+                                
+                                
+                                        
+                                                    </div> 
+                        
+                        
+                        </div>
+                                
+                                
+                                <!--debut menu   <div id="logodroit"></div> -->
+                         <div id="menu">
+                                
+                                <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+
+                                             <nav class="nav nav-pills nav-justified">
+                                                    <ul class="nav nav-pills">
+                                                              <li class="nav-item">
+                                                                <a class="nav-link " href="{{ path('acceuil')}}">Accueil</a>
+                                                              </li>
+                                                              <li class="nav-item dropdown">
+                                                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                           L'&Eacute;cole
+                                                                        </a>
+                                                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                                        <a class="dropdown-item" href="#">Pr&eacute;sentation</a>
+                                                                        <a class="dropdown-item" href="{{path('organigramme_show')}}">Organigramme</a>
+                                                                        <a class="dropdown-item" href="{{path('missions_show')}}">Missions</a>
+                                                                     </div>
+                                                                    </li>
+                                                              <li class="nav-item dropdown">
+                                                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        Formation
+                                                                      </a>                                                           
+                                                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                                            <a class="dropdown-item" href="#">Formation Initiale</a>
+                                                                            <a class="dropdown-item" href="#">Formation Continue</a>
+                                                                            <a class="dropdown-item" href="#">Formation &agrave; Distance et en R&eacute;seau</a>
+                                                                        </div>
+                                                                      </li>
+
+                                                              <li class="nav-item">
+                                                                <a class="nav-link " href="#">Recherche</a>
+                                                              </li>
+                                                              
+                                                              <li class="nav-item">
+                                                                  <a class="nav-link " href="{{path('admission_show')}}">Admissions</a>
+                                                                </li>
+                                                                    
+                                                                    <li class="nav-item">
+                                                                <a class="nav-link " href="#">Concours</a>
+                                                              </li>
+                                                                    &nbsp;&nbsp;
+                                                                    <!--
+                                                                      <form class="form-inline my-2 my-lg-0">
+                                                                      <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search">
+                                                                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
+                                                                    </form>
+                                                                    -->
+                                                                    
+                                                  
+                                                            
+                                              </ul></nav></nav>
+ 
+ 
+                                              </div>  &nbsp;&nbsp;&nbsp;&nbsp;
+                                                
+                <!--carousel et communique-->                
+      
+        <div id="contenu"> &nbsp;
+                    <!--debut Communique-->
+                <div id="directeur">&nbsp;
+
+                  <table>
+                      <tr><h3><span class="badge badge-success"><b>Communiqu&eacute;s</b></span></h3></tr>
+                      {% for com in communiques %}
+                      <tr><ul class="list-group list-group-flush">
+                          <li class="list-group-item"><a href="{{ path('communique_show', {'id': com.id}) }}"><font color="black"> {{com.libelle}}...</font></a></li></ul>
+              </tr> {%endfor%}
+                  </table>&nbsp;
+
+                  <table>
+                    <tr><h3><span class="badge badge-success"><b>Actualit&eacute;s</b></span></h3></tr>
+                    {% for actu in actualites %}
+                    <tr><ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="{{ path('actualite_show', {'id': actu.id}) }}"><font color="black"> {{actu.libelle}}...</font></a></li></ul>
+            </tr> {%endfor%}
+                </table>
+
+                  
+                                              </div>                
+                <!--debut carousel-->
+          <div id="interieurcar">
+        
+                                 <div id="carousel" class="carousel slide" data-ride="carousel" data-interval=4000>
+                                     {% for article in imagescar %}
+
+                                                {% for i in 0..article.images|length %}
+                                            <ol class="carousel-indicators">
+                                              <li data-target="#carousel" data-slide-to="{{i}}" class="active"></li>
+                                            
+                                             
+                                            </ol>{%endfor%}{%endfor%}
+
+                                            
+                                            <div class="carousel-inner">
+                                              {% for article in imagescar %}
+
+                                                {#{% for image in article.images[1:] %}#}
+                                              <div {% if loop.index ==1%} class="carousel-item active" {%else%} class="carousel-item" {%endif%}>
+                                               <img class="d-block w-100" class="img-fluid" src="build/images/ensb.jpg" alt="" style=""/>
+                                                <div class="carousel-caption">
+                                                  
+                                                  <p> {{ article.libelle }}.</p>
+                                                </div>
+                                              </div>{#{%endfor%}#}
+                                                
+                                               {% for image in article.images %}
+                                              <div class="carousel-item">
+                                                <img class="d-block w-100" class="img-fluid" src="{{asset(vich_uploader_asset(image, 'imageFile','App\\Entity\\Image')) }}" alt="" style=""/>
+                                                <div class="carousel-caption">
+                                                  
+                                                  <p>{{ article.libelle }}.</p>
+                                                </div>
+                                              </div> {%endfor%}{%endfor%}
+                                              
+                                            </div>
+                                            
+                                            <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                              <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                              <span class="sr-only">Next</span>
+                                            </a>
+                                          </div>
+       
+                                                
+                                               
+                                                </div> <!--fin carousel-->         </div> &nbsp;
+        
+        <!-- A multiplier-->
+        <div id="disciplineDepart">
+        
+                <div id="departement">
+                    <table class="table table-sm">
+
+                      <tr class="text-right"><h3><span class="badge badge-success"> <a href="{{path('directeur_show')}}"><font color="white"><b>Mot&nbsp;de&nbsp;Madame&nbsp;le&nbsp;Directeur</b></font></a> </span></h3></tr>
+                      <tr class="text-right"><h3><span class="badge badge-success"> <a href="{{path('organigramme_show')}}"><font color="white"><b>Organigramme</b></font></a> </span></h3></tr>
+                      <tr class="text-right"><h3><span class="badge badge-success"> <a href="#"><font color="white"><b>Bertoua &agrave; la Une</b></font></a> </span></h3></tr>
+                    </table>
+                  
+                  </div>
+        
+                    <div id="divactu">
+
+                      <table class="table table-sm">{#Departements#}
+                        <tr>
+                          <td class="text-left"><h3> <span class="badge badge-success"><b>D&eacute;partements</b></b></span></h3></td>
+                        </tr>
+                        <tr>
+                          <td class="text-left"><b>Section Lettres</b></td>
+                          <td class="text-center"><b>Section Sciences</b></td>
+                          <td class="text-center"><b>Section Sciences Humaines</b></td>
+                          <td class="text-center"><b>Section Sciences de l'&Eacute;ducation</b></td>
+                        </tr>
+                        <tr>
+                            <td class="text-left"><a href="#"><font color="black">Langues &eacute;trang&egrave;res</font></a></td>
+                            <td class="text-center"><a href="#"><font color="black">Chimie</font></td>
+                            <td class="text-center"><a href="#"><font color="black">G&eacute;ographie</b></font></td>
+                              
+                                <td class="text-center"><a href="#"><font color="black">Sciences de l'&Eacute;ducation</a></font></td>
+
+                        </tr>
+                        <tr>
+                            <td class="text-left" ><a href="#"><font color="black">Lettres Modernes Fran&ccedil;aises</font></a></td>
+                            <td class="text-center"><a href="#"><font color="black">Sciences de la Vie</font></a></td>
+                            <td class="text-center"><a href="#"><font color="black"> Histoire</font></a></td>
+                            
+                        </tr>
+                        <tr>
+                            <td class="text-left" ><a href="#"><font color="black"> Langues et Cultures Camerounaises</font></a></td>
+                            <td class="text-center"> <a href="{{ path('departement_info') }}"><font color="black">Informatique</a></font></td>
+                            <td class="text-center"><a href="#"><font color="black"> Philosophie</font></a></td>
+                            
+
+                        </tr>
+
+                        <tr>
+                          
+                                <td class="text-left"><a href="#"><font color="black"> Techniques et Langage Sp&eacute;cialis&eacute;es</font></a></td>
+                                <td class="text-center"><a href="#"><font color="black"> Math&eacute;matiques</font></a></td>
+                                <td class="text-center"><a href="#"><font color="black">Sciences de la Terre et l'Environnement</font></a></td>
+                                
+                            
+
+                        </tr>
+
+                        <tr>
+
+                            <td class="text-left"><a href="#"><font color="black"> Lettres Modernes Anglaises</font></a></td>
+                            <td class="text-center"><a href="#"><font color="black">Physique</font></a></td>
+                        </tr>
+                        <tr>
+                         
+                              <td colspan="3" class="text-left"><a href="#"><font color="black">Lettres Bilingues</font></a></td>
+                      
+                        </tr>
+                      </table>
+                                     
+                        </div>
+                   
+                        
+                                        
+                         </div> <!--fin a multiplier-->
+                         &nbsp;&nbsp;&nbsp;
+                          <!-- A multiplier-->
+       <div id="disciplineDiv">
+        
+                <div id="departement"> 
+
+                  <table>
+                    <tr><h3><span class="badge badge-success"> <a href="#"><font color="white"><b>Associations</b></font></a> </span></h3></tr>
+                    <tr><h3><span class="badge badge-success"> <a href="#"><font color="white"><b>Partenaires</b></font></a> </span></h3></tr>
+                    <tr><h3><span class="badge badge-success"> <a href="#"><font color="white"><b>Staff Enseignant</b></font></a> </span></h3></tr>
+                    <tr><h3><span class="badge badge-success"> <a href="#"><font color="white"><b>Le Personnel</b></font></a> </span></h3></tr>
+                  </table>
+               
+                                        </div>    
+        
+                    <div id="division">
+
+                      <table class="table table-sm">{#divisions#}
+                        <tr>
+                            <td class="text-left"><h3> <span class="badge badge-success"><b>Divisions</b></span></h3></td>
+                        </tr>
+                        <tr>
+                      
+                        <td class="text-left"><a href="#"><font color="black">&Eacute;tudes de la Scolarit&eacute; et des Stages</font></a></td>
+                        <td class="text-center"><a href="{{path('divisionaffacad_show')}}"><font color="black">Affaires Acad&eacute;miques, de la Recherche et de la Coop&eacute;ration</font></a></td>
+                        </tr>
+                        
+                        <tr>
+
+                            <td class="text-left"><a href="#"><font color="black">Bilinguisme et de l'&Eacute;ducation Citoyenne et Inter-Culturelle</font></a></td>
+                            <td class="text-center"><a href="#"><font color="black">Formation Continue et &agrave; Distance</font></a></td>
+                        </tr>
+
+                      <!--
+                        <tr>
+                            <td class="text-left"><a href="#"><font color="black">Affaires Administratives et financi&egrave;res</font></a></td>
+                        </tr>
+                      -->  
+
+                      </table>
+                                      
+                                
+
+                        
+                                           </div>
+                         </div>
+                         
+                     
+                         
+                         <!-- A multiplier-->
+        <div id="disciplineService">
+        
+                
+                    <div id="departement">
+                      <table>
+                        <tr><h3><span class="badge badge-success"> <a href="#"><font color="white"><b>Meilleurs&nbsp;M&eacute;moires</b></font></a> </span></h3></tr>
+                        <tr><h3><span class="badge badge-success"> <a href="#"><font color="white"><b>Les Laur&eacute;ats</b></font></a> </span></h3></tr>
+                        <tr><h3><span class="badge badge-success"> <a href="#"><font color="white"><b>Activit&eacute;s</b></font></a> </span></h3></tr>
+                        <tr><h3><span class="badge badge-success"> <a href="#"><font color="white"><b>Actualit&eacute;s</b></font></a> </span></h3></tr>
+                        <tr><h3><span class="badge badge-success"> <a href="#"><font color="white"><b>Communiqu&eacute;s</b></font></a> </span></h3></tr>
+                        
+                      </table>
+                    </div>
+                   <div id="divactuService">
+                                     {# <div class="row">
+                                        <div class="col-sm">
+                                          
+                                         <h2> <span class="badge badge-success">Services</span></h2>
+                                          
+                                              </div>
+                                    </div>
+                                                <div class="row">
+                                                    <div class="col-sm">
+                                                      <a href="#"><font color="black"><b>Administratif et Financier</b></font></a>
+                                                    </div>
+                                                    
+                                                    <div class="col-sm">
+                                                      <a href="#"><font color="black"><b>Bilinguisme</b></font></a>
+                                                    </div>
+                                                    <div class="col-sm">
+                                                      <a href="#"><font color="black"><b>Relations Publiques</b></font></a>
+                                                    </div>
+                                                    <div class="col-sm">
+                                                      <a href="#"><font color="black"><b>Personnels Enseignants</b></font></a>
+                                                    </div>
+                                                  </div>
+                                                  &nbsp;&nbsp;&nbsp;
+                                                  <div class="row">
+                                                    <div class="col-sm">
+                                                        <a href="#"><font color="black"><b>Programmes et Examens</b></font></a>
+                                                    </div>
+                                                    <div class="col-sm">
+                                                      <a href="#"><font color="black"><b>Scolarit&eacute; et des Dipl&ocirc;mes </b></font></a>
+                                                    </div>
+                                                    <div class="col-sm">
+                                                      <a href="#"><font color="black"><b>Stages P&eacute;dagogigues</b></font></a>
+                                                    </div>
+                                                    <div class="col-sm">
+                                                     <a href="#"><font color="black"><b>Recherche et des Publications</b></font></a>
+                                                     
+                                                    </div>
+                                                  </div>
+                                                  
+                                                  &nbsp;&nbsp;&nbsp;
+                                                  <div class="row">
+                                                    <div class="col-sm">
+                                                        <a href="#"><font color="black"><b>Action Sanitaire</b></font></a>
+                                                    </div>
+                                                    <div class="col-sm">
+                                                      <a href="#"><font color="black"><b>&Eacute;quipements et de la Maintenance</b></font></a>
+                                                    </div>
+                                                    <div class="col-sm">
+                                                      <a href="#"><font color="black"><b>Oeuvres Universitaires et l'Intendance</b></font></a>
+                                                    </div>
+                                                    <div class="col-sm">
+                                                    <a href="#"><font color="black"><b>Formation &agrave; Distance</b></font></a>
+                                                    
+                                                   
+                                                     
+                                                     
+                                                    </div>
+                                                  </div>
+                                                  
+                                                  &nbsp;&nbsp;&nbsp;&nbsp;
+                                                  <div class="row">
+                                                    <div class="col-sm">
+                                                     <a href="#"><font color="black"><b>Coop&eacute;ration et du partenariat Institutionnel</b></font></a>
+                                                        
+                                                    </div>
+                                                    <div class="col-sm">
+                                                        <a href="#"><font color="black"><b>Formation Continue</b></font></a>
+                                                      
+                                                    </div>
+                                                    <div class="col-sm">
+                                                      <a href="#"><font color="black"><b>Activit&eacute;s Socio-Culturelles Associatives,Sportives et R&eacute;cr&eacute;atives</b></font></a>
+                                                                                                       
+                                                    </div>
+
+                                                  </div>#}
+
+                                                  <table class="table table-sm">
+                                                      <tr>
+                                                        <td class="text-left"><h3> <span class="badge badge-success"><b>Centres</b></span></h3></td>
+                                                      </tr>
+
+                                                      <tr>
+                    
+                                                        <td class="text-left"><a href="{{path('centredoc_show')}}"><font color="black">Documentation</font></a></td>&nbsp;&nbsp;
+                                                        
+                                                        <td class="text-center"><a href="#"><font color="black">Ressources en Technologiques &Eacute;ducatives</font></a></td>
+                                                        </tr>
+
+                                                    </table>
+
+                        
+                                           </div>
+                         </div> <!--fin a multiplier-->
+
+                         
+                    
+        
+               
+                         &nbsp;&nbsp;&nbsp;
+
+                    {#<div id="centre">
+                                  
+                                                      <table class="table table-sm">
+                                                        <tr>
+                                                          <td class="text-left"><h3> <span class="badge badge-success"><b>Centres</b></span></h3></td>
+                                                        </tr>
+
+                                                        <tr>
+                      
+                                                          <td class="text-left"><a href="#"><font color="black">Documentation</font></a></td>&nbsp;&nbsp;
+                                                          
+                                                          <td class="text-center"><a href="#"><font color="black">Ressources en Technologiques &Eacute;ducatives</font></a></td>
+                                                          </tr>
+
+                                                      </table>
+                        
+                                           </div>#}&nbsp;&nbsp;&nbsp;
+                        
+                        
+        
+       <div id="piedpage">Copyright 2019.ENS Bertoua</div>
+        
+          <script type="text/javascript" src="{{ asset('build/js/jquery-3.3.1.min.js') }}"></script>
+         <script type="text/javascript" src="{{ asset('build/js/bootstrap.min.js') }}"></script>
+       
+    
+    </div> 
+    </body>
+    </html>

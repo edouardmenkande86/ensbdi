@@ -1,0 +1,454 @@
+<!DOCTYPE HTML>
+<html>
+         <head>
+            <meta http-equiv="content-type" content="text/html" />
+            
+             <link href="{{ asset('build/css/styleportail_div.css') }}" rel="stylesheet" type="text/css">
+
+            
+            
+             <!-- Bootstrap -->
+                 <link href="{{ asset('build/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+     
+             <!-- Bootstrap responsive -->
+            <link href="{{ asset('build/css/bootstrap-responsive.min.css') }}" rel="stylesheet" type="text/css">
+    
+            <title>Organigramme</title>
+        </head>
+
+<body>
+
+    <div id="body">                       
+
+
+ <div id="logogenerale"> 
+
+            
+           
+         <div id="logogauche">
+          
+                    <div id="logocenter">
+                    
+                           <div id="logodroit"><img src="/build/images/logo.png"/> </div><img src="/build/images/enslogo.png"  /></div>
+                            
+                            
+                            
+                                    
+                                                </div> 
+                    
+                    
+                    </div>
+                            
+                            
+                            <!--debut menu   <div id="logodroit"></div> -->
+                            <div id="menu">
+                            
+                                    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    
+                                                 <nav class="nav nav-pills nav-justified">
+                                                        <ul class="nav justify-content-center">
+                                                                  <li class="nav-item">
+                                                                    <a class="nav-link " href="{{ path('acceuil')}}">Acceuil</a>
+                                                                  </li>
+                                                                  <li class="nav-item dropdown">
+                                                                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                            L'&Eacute;cole </a>
+                                                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                                            <a class="dropdown-item" href="#">Pr&eacute;sentation</a>
+                                                                            <a class="dropdown-item" href="{{path('organigramme_show')}}">Organigramme</a>
+                                                                            <a class="dropdown-item" href="{{ path('missions_show')}}">Missions</a>
+                                                                         </div>
+                                                                        </li>
+    
+                                                                  <li class="nav-item dropdown">
+    
+                                                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                     Formation
+                                                                            </a>
+                                                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                                            <a class="dropdown-item" href="#">Formation Initiale</a>
+                                                                            <a class="dropdown-item" href="#">Formation Continue</a>
+                                                                            <a class="dropdown-item" href="#">Formation &agrave; Distance et en R&eacute;seau</a>
+                                                                         </div>
+                                                                        </li>
+                                                                  
+                                                                  <li class="nav-item">
+                                                                    <a class="nav-link " href="#">Recherche</a>
+                                                                  </li>
+                                                                  
+                                                                        
+                                                                  <li class="nav-item">
+                                                                      <a class="nav-link " href="{{path('admission_show')}}">Admissions</a>
+                                                                    </li>
+                                                                        
+                                                                        <li class="nav-item">
+                                                                    <a class="nav-link " href="#">Concours</a>
+                                                                  </li>
+                                                                        &nbsp;&nbsp;
+                                                                      <form class="form-inline my-2 my-lg-0">
+                                                                          <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search">
+                                                                          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
+                                                                        </form>  
+                                                      
+                                                                
+                                                  </nav>
+     
+     
+                                                  </div>  &nbsp;&nbsp;&nbsp;&nbsp;
+                                            
+           <!--carousel et communique-->                
+  
+    <div id="contenuorgan"> &nbsp;
+                <!--debut Communique-->
+            <div id="directeur">&nbsp;
+                <table class="table table-sm">
+                    <tr><h3><span class="badge badge-success"><b>Communiqu&eacute;s</b></span></h3></tr>
+                    {% for com in communiques %}
+                    <tr><ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="{{ path('communique_show', {'id': com.id}) }}"><font color="black"> {{com.libelle}}...</font></a></li></ul>
+            </tr> {%endfor%}
+                </table>&nbsp;
+
+                <table>
+                  <tr><h3><span class="badge badge-success"><b>Actualit&eacute;s</b></span></h3></tr>
+                  {% for actu in actualites %}
+                  <tr><ul class="list-group list-group-flush">
+                      <li class="list-group-item"><a href="{{ path('actualite_show', {'id': actu.id}) }}"><font color="black"> {{actu.libelle}}...</font></a></li></ul>
+          </tr> {%endfor%}
+              </table>
+              
+                                          </div>               
+            <!--debut carousel-->
+      <div id="interieurcar">
+            
+                                        {%for org in organigramme%}
+
+                                            {% for image in org.images%} {# org.image= on va directement a la table image#}
+
+                                            <img  class="img-fluid" src="{{asset(vich_uploader_asset(image, 'imageFile','App\\Entity\\Image')) }}" alt="" style=""/>
+                                            {%endfor%}
+
+                                        {%endfor%} 
+                                            
+                                                </div> <!--fin carousel-->         </div> &nbsp;
+                            
+                                            
+    
+        <div id="contenugeneraleorgan">&nbsp;&nbsp;
+            
+                <table class="table table-sm">
+                        {%for org in organigramme%}  
+                                   <tr><td class="text-left"> <h3><b>{{org.libelle}}</b></h3></td></tr>&nbsp;&nbsp;
+                            
+                                    <tr><td class="text-left">L'&Eacute;cole Normale Sup&eacute;rieure de Bertoua Comprend les organes suivants:</td></tr>
+     
+                                            {%endfor%} 
+                                       {#</table>#}
+
+               {# <table class="table table-sm">#}
+                     {#liste organes#}
+                    {% for list in listorgan%}
+
+                        <tr>
+                                <td class="text-left"><ul><li><h6>{{list.libelle}}</h6></li></ul></td>
+                         
+                                                     </tr>
+                             {%endfor%} 
+
+                             {%for org in organigramme%}
+                             <tr><td class="text-left">{{org.contenu}}</td></tr>&nbsp;&nbsp;
+                             {%endfor%}
+
+                                                         {#Conseil de Direction#}
+                             <tr>
+                                    <td class="text-left"> <h5><b>Conseil&nbsp;de&nbsp;Direction</b></h5></td>
+                             </tr>
+
+                             <tr>
+                                 <td class="text-left">
+                                     Il&nbsp;examine&nbsp;et&nbsp;&eacute;met&nbsp;son&nbsp;avis&nbsp;sur:
+                                 </td>
+                             </tr>
+                                {#Conseil de Direction#}
+                             {%for listc in listconseil%}
+                             <tr>
+                                    <td class="text-left"><ul><li><h6>{{listc.description}}</h6></li></ul></td>
+
+                             </tr>
+
+                             {%endfor%}
+
+                                                        {# Direction#}
+                                                        <tr>
+                                                            <td class="text-left"> <h5><b>Directeur</b></h5></td>
+                                                     </tr>
+                        
+                                                     <tr>
+                                                         <td class="text-left">
+                                                             le&nbsp;Directeur&nbsp;de&nbsp;L'ENS&nbsp;de&nbsp;Bertoua&nbsp;est&nbsp;charg&eacute;&nbsp;de :
+                                                         </td>
+                                                     </tr>
+                                                        {# de Direction#}
+                                                     {%for listd in listdirection%}
+                                                     <tr>
+                                                            <td class="text-left"><ul><li><h6>{{listd.description}}</h6></li></ul></td>
+                                                            {%endfor%}
+                                                  </tr>
+                                                     <td class="text-left">{%for dir in directeur%}
+                                                        le&nbsp;Directeur&nbsp;de&nbsp;L'ENS&nbsp;de&nbsp;Bertoua&nbsp;est&nbsp;le:&nbsp;{{dir.titre}}&nbsp;{{dir.nom}},&nbsp;{{dir.grade}}
+                                                        
+                                                    </td>{%endfor%}
+
+                                                       {# Directeur adjoint#}
+                                                       {%for listda in listdirectionAdj%}
+                                                       <tr>
+                                                       <tr>
+                                                         <td class="text-left"> <h5><b>{{listda.libelle}}</b></h5></td>
+                                                  </tr>
+
+                                                  <tr>
+                                                   <td class="text-left"><ul><li><h6>{{listda.description}}</h6></li></ul></td>
+                                                   {%endfor%}
+                                         </tr>
+                                            <td class="text-left">{%for dirad in directeuradj%}
+                                               &nbsp;Directeur&nbsp;Adjoint&nbsp;:&nbsp;{{dirad.titre}}&nbsp;{{dirad.nom}},&nbsp;{{dirad.grade}}
+                                           </td>{%endfor%}
+                                                
+
+
+                                                      {# Secretariat general #}
+                                                      <tr>
+                                                        <td class="text-left"> <h5><b>S&eacute;cr&eacute;tariat G&eacute;n&eacute;ral</b></h5></td>
+                                                 </tr>
+                    
+                                                 <tr>
+                                                     <td class="text-left">
+                                                         le S&eacute;cr&eacute;taire G&eacute;n&eacute;ral&nbsp;est&nbsp;charg&eacute;&nbsp;de :
+                                                     </td>
+                                                 </tr>
+                                                    {# de Direction adjoint#}
+                                                 {%for lists in listsecretariat%}
+                                                 <tr>
+                                                        <td class="text-left"><ul><li><h6>{{lists.description}}</h6></li></ul></td>
+                                                        {%endfor%}
+                                              </tr>
+                                                 <td class="text-left">{%for secr in secretaire%}
+                                                    S&eacute;cr&eacute;taire G&eacute;n&eacute;ral&nbsp;:{{secr.titre}}&nbsp;{{secr.nom}},&nbsp;{{secr.grade}}
+                                                </td>{%endfor%}
+
+                                             
+
+                                                 {# Division des stages#}
+                                                 <tr>
+                                                    <td class="text-left"> <h5><b>Division des &Eacute;tudes, de la Scolarit&eacute; et des Stages</b></h5></td>
+                                             </tr>
+                
+                                             <tr>
+                                                 <td class="text-left">
+                                                    La Division des &Eacute;tudes, de la Scolarit&eacute; et des Stages est&nbsp;charg&eacute;&nbsp;de :
+                                                 </td>
+                                             </tr>
+                                                {# division#}
+                                             {%for listde in listdivisionetud%}
+                                             <tr>
+                                                    <td class="text-left"><ul><li><h6>{{listde.description}}</h6></li></ul></td>
+                                                    {%endfor%}
+                                          </tr>
+                                             <td class="text-left">{%for div in divess%}
+                                                Chef&nbsp;de&nbsp;Division : {{div.titre}}&nbsp;{{div.nom}},&nbsp;{{div.grade}}
+                                            </td>{%endfor%}
+
+                                        
+
+                                              {# Division Academique#}
+                                              <tr>
+                                                <td class="text-left"> <h5><b>Division des Affaires Acad&eacute;miques, de la Recherche et de la Coop&eacute;ration</b></h5></td>
+                                         </tr>
+            
+                                         <tr>
+                                             <td class="text-left">
+                                                La Division des Affaires Acad&eacute;miques, de la Recherche et de la Coop&eacute;ration est&nbsp;charg&eacute;&nbsp; :
+                                             </td>
+                                         </tr>
+                                            {# division#}
+                                         {%for listac in listdivisionacad%}
+                                         <tr>
+                                                <td class="text-left"><ul><li><h6>{{listac.description}}</h6></li></ul></td>
+                                                {%endfor%}
+                                      </tr>
+                                         <td class="text-left">{%for div in divacad%}
+                                            Chef&nbsp;de&nbsp;Division :{{div.titre}}&nbsp;{{div.nom}},&nbsp;{{div.grade}}
+                                        </td>{%endfor%}
+
+                                    
+
+                                         {# Division Formation#}
+                                         <tr>
+                                            <td class="text-left"> <h5><b>Division de la Formation Continue et &aacute; Distance</b></h5></td>
+                                     </tr>
+        
+                                     <tr>
+                                         <td class="text-left">
+                                            La Division de la Formation Continue et &aacute; Distance est&nbsp;charg&eacute;&nbsp;:
+                                         </td>
+                                     </tr>
+                                        {# division#}
+                                     {%for listfo in listdivisionformation%}
+                                     <tr>
+                                            <td class="text-left"><ul><li><h6>{{listfo.description}}</h6></li></ul></td>
+                                            {%endfor%}
+                                  </tr>
+                                     <td class="text-left">{%for div in divform%}
+                                        Chef&nbsp;de&nbsp;Division :{{div.titre}}&nbsp;{{div.nom}},&nbsp;{{div.grade}}
+                                    </td>{%endfor%}
+
+                                  
+
+                                     {# Division admin#}
+                                     <tr>
+                                        <td class="text-left"> <h5><b>Division des Affaires Administratives et Financi&egrave;res</b></h5></td>
+                                 </tr>
+    
+                                 <tr>
+                                     <td class="text-left">
+                                        La Division des Affaires Administratives et Financi&egrave;res est&nbsp;charg&eacute;&nbsp;:
+                                     </td>
+                                 </tr>
+                                    {# division#}
+                                 {%for listad in listdivisionadmin%}
+                                 <tr>
+                                        <td class="text-left"><ul><li><h6>{{listad.description}}</h6></li></ul></td>
+                                        {%endfor%}
+                              </tr>
+                                 <td class="text-left">{%for div in divadmin%}
+                                    Chef&nbsp;de&nbsp;Division :{{div.titre}}&nbsp;{{div.nom}},&nbsp;{{div.grade}}
+                                </td>{%endfor%}
+
+                                 
+
+                                     {# Division bilingue#}
+                                     <tr>
+                                        <td class="text-left"> <h5><b>Division du Bilinguisme, de l'&Eacute;ducation Citoyenne et Interculturelle</b></h5></td>
+                                 </tr>
+    
+                                 <tr>
+                                     <td class="text-left">
+                                        La Division du Bilinguisme, de l'&Eacute;ducation Citoyenne et Interculturelle est&nbsp;charg&eacute;&nbsp;de :
+                                     </td>
+                                 </tr>
+                                    {# division#}
+                                 {%for listbi in listdivisionbilingue%}
+                                 <tr>
+                                        <td class="text-left"><ul><li><h6>{{listbi.description}}</h6></li></ul></td>
+                                        {%endfor%}
+                              </tr>
+                                 <td class="text-left">{%for div in divbil%}
+                                    Chef&nbsp;de&nbsp;Division :{{div.titre}}&nbsp;{{div.nom}},&nbsp;{{div.grade}}
+                                </td>{%endfor%}
+
+                             {# conseil#}
+                             <tr>
+                                <td class="text-left"> <h5><b>Conseil d'&Eacute;tablissement</b></h5></td>
+                         </tr>
+
+                         <tr>
+                             <td class="text-left">
+                                Le Conseil d'&Eacute;tablissement &eacute;met des avis et des r&eacute;commandations sur :
+                             </td>
+                         </tr>
+                            {# division#}
+                         {%for listetab in listconseiletab%}
+                         <tr>
+                                <td class="text-left"><ul><li><h6>{{listetab.description}}</h6></li></ul></td>
+                                {%endfor%}
+                      </tr>
+                        
+                      {# assemblee#}
+                      <tr>
+                        <td class="text-left"> <h5><b>Assembl&eacute;e G&eacute;n&eacute;rale</b></h5></td>
+                 </tr>
+
+                 
+                    {#assemblee#}
+                 {%for listetas in listassemblee%}
+                 <tr>
+                        <td class="text-left"><ul><li><h6>{{listetas.description}}</h6></li></ul></td>
+                        {%endfor%}
+              </tr>
+
+              {#Departement#}
+              <tr>
+               <td class="text-left"> <h5><b>D&eacute;partement</b></h5></td>
+        </tr>
+
+        <tr>{%for descript in departementdes%}
+            <td class="text-left">
+               {{descript.description}}&nbsp;qui est charg&eacute;:
+            </td>{%endfor%}
+        </tr>
+           {# departement#}
+        {%for listde in listdepartement%}
+        <tr>
+               <td class="text-left"><ul><li><h6>{{listde.description}}</h6></li></ul></td>
+               {%endfor%}
+     </tr>
+                                                    
+
+                  </table>&nbsp;&nbsp;
+
+
+           
+        
+        </div>
+
+        <div id="menugauche1">
+              <div id="menugauchehaut">
+                    <table class="table table-sm">
+
+                            <tr class="text-right"><h3><span class="badge badge-success"> <a href="{{path('directeur_show')}}"><font color="white"><b>Mot&nbsp;de&nbsp;Madame&nbsp;le&nbsp;Directeur</b></font></a> </span></h3></tr>
+                            <tr class="text-right"><h3><span class="badge badge-success"> <a href="{{path('organigramme_show')}}"><font color="white"><b>Organigramme</b></font></a> </span></h3></tr>
+                            <tr class="text-right"><h3><span class="badge badge-success"> <a href="#"><font color="white"><b>Bertoua &agrave; la Une</b></font></a> </span></h3></tr>
+                          </table>
+              
+                      </div>{#fin gauchehaut#}
+
+                      <div id="menugauchehaut">
+
+                            <table class="table table-sm">
+                                    <tr><h3><span class="badge badge-success"> <a href="#"><font color="white"><b>Associations</b></font></a> </span></h3></tr>
+                                    <tr><h3><span class="badge badge-success"> <a href="#"><font color="white"><b>Partenaires</b></font></a> </span></h3></tr>
+                                    <tr><h3><span class="badge badge-success"> <a href="#"><font color="white"><b>Staff Enseignant</b></font></a> </span></h3></tr>
+                                    <tr><h3><span class="badge badge-success"> <a href="#"><font color="white"><b>Le Personnel</b></font></a> </span></h3></tr>
+                                  </table>
+                      
+                      </div>{#fin 2eme menugauchehaut#}
+
+              <div id="menugauchebas">
+                <table class="table table-sm">
+                    <tr><h3><span class="badge badge-success"> <a href="#"><font color="white"><b>Meilleurs&nbsp;M&eacute;moires</b></font></a> </span></h3></tr>
+                    <tr><h3><span class="badge badge-success"> <a href="#"><font color="white"><b>Les Laur&eacute;ats</b></font></a> </span></h3></tr>
+                    <tr><h3><span class="badge badge-success"> <a href="#"><font color="white"><b>Activit&eacute;s</b></font></a> </span></h3></tr>
+                    <tr><h3><span class="badge badge-success"> <a href="#"><font color="white"><b>Actualit&eacute;s</b></font></a> </span></h3></tr>
+                    <tr><h3><span class="badge badge-success"> <a href="#"><font color="white"><b>Communiqu&eacute;s</b></font></a> </span></h3></tr>
+                    
+                  </table>
+              
+              </div>{#fin gauchebas#}
+
+
+                </div>{#fin gauche1#}
+             
+   
+                    
+                    
+    
+   <div id="piedpage">Copyright 2019.ENS Bertoua</div>
+    
+    <script type="text/javascript" src="{{ asset('build/js/jquery-3.3.1.min.js') }}"></script>
+     <script type="text/javascript" src="{{ asset('build/js/bootstrap.min.js') }}"></script>
+    
+   
+
+</div> 
+</body>
+</html>

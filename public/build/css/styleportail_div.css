@@ -1,0 +1,270 @@
+
+body {
+ /** background-image: url('images/page_g.jpg');*/
+  /**background-repeat: repeat-x;*/
+
+ color: #524B2D;
+  background-color: #BEB389;
+  
+}
+
+.table td {
+    text-align: right;   
+ }
+ .table tr {
+    text-align: right;   
+ }
+
+div {
+	text-align:center;
+	}
+    
+    div#body{
+        background-color:#eee7e7;
+       /** background-color: #a9a9a9;*/
+    }
+    
+      div#logogenerale {
+             margin-left: 150px;
+    	width:1050px;
+    	height:175px;
+       /**	margin-bottom: 10px;*/
+    	
+   	border-top: 10px solid #29ab43;/** espace vert du haut au debut*/
+  	border-bottom: 15px solid #29ab43;
+	border-radius: 5px;
+     /** background-color:#CC99CC;*/
+         
+     
+	   }
+    
+    
+        div#logogauche {
+            padding-right: 100px;
+        
+    	width:150px;
+    	height:150px;
+        position: absolute;
+        background-image:url("logo1.png");
+        
+            
+         
+     
+	   }
+       
+       
+        div#logodroit {
+             margin-left: 750px;
+    	width:200px;
+    	height:150px;
+        /** background-color:#FF3330;*/
+         float: right;
+         alignment-adjust: auto;
+         position: absolute;
+        /** background-image: url('build/images/logo.png');*/
+     
+	   }
+       
+       div#logocenter {
+             margin-left: 139px;
+    	width:700px;
+    	height:150px;
+        /**background-color:#66CC33;*/
+        position: absolute;
+         
+     
+    
+	}
+               
+               
+                div#menu {
+                     margin-left: 150px;
+            	width:1050px;
+            	height:50px;
+
+        	}
+      
+        div#contenu {
+        	width:1050px;
+        	height:400px;
+            /** background-color:#66CC33;*/
+            margin-left: 150px;
+    
+            }
+
+           
+            
+            div#contenuorgan {
+                width:1050px;
+                height:490px;
+                /** background-color:#66CC33;*/
+                margin-left: 150px;
+        
+                }
+            
+            div#interieurcar{
+                 float: inside;
+        	width:680px;
+        	height:400px;
+           /** background-color:#FF3300;*/  
+        
+    }
+
+ 
+       
+             div#directeur {
+             float:right;
+        	width:350px;
+        	height:400px;
+           /** background-color:#FF3300;*/
+         
+            /**margin-left: 150px; marge interieur*/
+          
+
+            
+    
+        	}
+            
+                div#menudroit {
+                	float:right;
+                	width:300px;
+                	height:300px;
+                
+                     margin-left: 150px;
+                	}
+            
+            div#disciplineDepart {
+        	width:1050px;
+        	height:450px;
+            margin-left: 150px;
+            /*background-color:#66CC33;*/
+            /**background-color:#FF3300;*/
+            
+            }
+
+            div#disciplineDiv {
+                width:1050px;
+                height:200px;
+                margin-left: 150px;
+                /**background-color:#66CC33;*/
+                
+                
+                }
+            div#disciplineService {
+                width:1050px;
+                height:220px;
+                margin-left: 150px;
+               /** background-color:#FF3300;*/
+                
+                }
+            
+          #divactu{
+             float: inside;
+        	width:680px;
+        	height:400px;
+            
+           /** background-color:#FF3300;*/
+
+      }
+      #divactuService{
+        float: inside;
+       width:680px;
+       height:200px;
+       
+       /**background-color:#FF3300;*/
+
+ }
+      
+      #centre{
+             float: inside;
+        	width:680px;
+        	height:100px;
+           
+             margin-left: 150px;
+  
+      }
+      
+       #division{
+             float: inside;
+        	width:680px;
+            height:200px;
+            /** background-color:#66CC33;*/
+            /** margin-left: 150px;*/
+
+      }
+      
+       div#departement {
+             float:right;
+        	width:350px;
+        	height:100px;
+           /** background-color:#FF3300;*/
+         
+            /**margin-left: 150px; marge interieur*/
+
+        	}
+            
+        div#piedpage {
+            
+              margin-left: 150px;
+        	width:1050px;
+        	height:150px;
+             background-color:#66CC33;
+        
+                clear:both;
+        	}
+			
+			     div#contenugenerale {
+           float: left;
+        	width:680px;
+        	height:800px;
+            /** background-color:#FF3300;*/
+            margin-left: 150px;
+    
+            }
+            
+            div#contenugeneraleorgan {
+                float: left;
+                 width:680px;
+                 height:4000px;
+                 /** background-color:#FF3300;*/
+                 margin-left: 150px;
+         
+                 }
+
+             div#menugauche1 {
+           float: right;
+        	width:350px;
+        	height:800px;
+             /**background-color:#66CC33;*/
+             margin-right: 150px;
+            
+    
+        	}
+            
+             div#menugauchehaut {
+             float:right;
+        	width:350px; /**largeur*/
+        	height:250px;/**hauteur*/
+           
+            /** background-color:#66CC33;*/
+            
+        	}
+            
+            div#menugauchebas {
+             float:right;
+        	width:350px;
+        	height:250px;
+           /** background-color:#CC99CC;*/
+
+        	}
+  
+/* Carousel */
+
+.carousel-inner>.item > img{
+    margin: auto;
+    width: 100%;
+}
+            
+  h1#textalign{
+    text-align: start;
+  }          
